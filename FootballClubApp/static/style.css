@@ -1,0 +1,101 @@
+/* Stiluri CSS pentru tema fotbalistica - fara framework */
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f6f7;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #ffffff;
+  border-bottom: 2px solid #e6e6e6;
+}
+.logo { display:flex; align-items:center; gap:10px }
+.logo-img { width:48px; height:48px }
+.club-name { font-weight:700; color:#145214 }
+
+.container { max-width:1100px; margin:20px auto; padding:10px }
+.container-login { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; position:relative; overflow:hidden }
+.login-card { width:360px; padding:24px; box-shadow:0 6px 18px rgba(0,0,0,0.12); background:rgba(255,255,255,0.95); border-radius:8px; position:relative; z-index:2 }
+.header-login { position:relative }
+.bg-watermark {
+  /* Watermark mare in fundal; culoare rosie cu opacitate pentru a nu acoperi formularul */
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%) rotate(-12deg);
+  font-size: 48px;
+  color: rgba(204,51,51,0.14); /* rosu deschis, vizibil dar discret */
+  font-weight: 900;
+  letter-spacing: 2px;
+  z-index:1;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.logo-custom { width:64px; height:64px; object-fit:cover; border-radius:6px }
+.card { padding:20px; background:#fff; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.05) }
+.form-card { max-width:600px; margin:20px auto }
+
+h1, h2 { color:#145214 }
+
+label { display:block; margin-top:10px; font-size:13px }
+input[type="text"], input[type="email"], input[type="password"], select { width:100%; padding:8px; margin-top:6px; border:1px solid #ccc; border-radius:4px }
+
+.btn { display:inline-block; padding:8px 12px; background:#145214; color:#fff; text-decoration:none; border-radius:4px }
+.btn:hover { opacity:0.9 }
+.btn-secondary { background:#9a7a3c }
+.btn-logout { background:#a33 }
+.btn-primary { background:#145214; border:none; padding:10px 14px; color:#fff; border-radius:4px }
+.btn-danger { background:#cc3333; color:#fff; border:none; padding:8px 12px; border-radius:4px }
+.btn-small { padding:4px 8px; font-size:12px }
+
+.search-form { display:flex; gap:8px; margin-bottom:12px }
+.search-form input { flex:1 }
+
+.table { width:100%; border-collapse:collapse; margin-top:10px }
+.table th, .table td { padding:8px 6px; border:1px solid #e6e6e6; font-size:13px }
+.table tbody tr:nth-child(odd) { background:#fff }
+.table tbody tr:nth-child(even) { background:#fbfbfb }
+
+.flash { padding:8px 10px; margin:10px 0; border-radius:4px }
+.flash.success { background:#e6f4ea; color:#145214 }
+.flash.error { background:#fdecea; color:#a33 }
+.error { color:#a33 }
+
+.form-actions { margin-top:12px; display:flex; gap:8px }
+
+.actions { display:flex; gap:8px }
+
+/* Stil pentru header login - pozitionam logo in colt */
+.header-login .logo { position:absolute; top:12px; left:12px; display:flex; align-items:center }
+.header-login .club-name { margin-left:74px }
+
+/* Pozitionare sigura a logo-ului in coltul stanga sus pe pagina de login */
+.container-login .logo {
+  /* Fixam logo-ul in coltul stanga-sus, peste orice alt element */
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.92);
+  padding: 6px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.container-login .logo-img { width:72px; height:72px }
+.container-login .club-name { position:static; margin-left:6px; color:#145214; font-weight:700; z-index:9999 }
+
+/* Ridicam formularul pentru a nu fi acoperit de logo */
+.login-card { margin-top: 100px }
+
+@media (max-width:700px) {
+  .container { padding:8px }
+  .table th, .table td { font-size:12px }
+}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sterge Suporter - AS FC FOTBAL CLUB</title>
+  <link rel="stylesheet" href="/static/style.css">
+ </head>
+<body>
+  <div class="container-form">
+    <header class="header">
+      <div class="logo">
+        <img src="/static/logo.jpeg" alt="logo" class="logo-img">
+        <span class="club-name">AS FC FOTBAL CLUB</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="card form-card">
+        <h2>Confirmare Stergere</h2>
+        <p>Sunteti sigur ca doriti sa stergeti suporterul <strong>{{ suporter.nume }} {{ suporter.prenume }}</strong> ({{ suporter.nr_legitimatie }}) ?</p>
+        <form method="post">
+          <button type="submit" class="btn-danger">Da, Sterge</button>
+          <a href="/dashboard" class="btn btn-secondary">Nu, Anuleaza</a>
+        </form>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

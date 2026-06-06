@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Editare Suporter - AS FC FOTBAL CLUB</title>
+  <link rel="stylesheet" href="/static/style.css">
+ </head>
+<body>
+  <div class="container-form">
+    <header class="header">
+      <div class="logo">
+        <img src="/static/logo.jpeg" alt="logo" class="logo-img">
+        <span class="club-name">AS FC FOTBAL CLUB</span>
+      </div>
+      <div class="actions">
+        <a href="/dashboard" class="btn">Inapoi la Dashboard</a>
+      </div>
+    </header>
+
+    <main>
+      <form method="post" class="card form-card">
+        <h2>Editare Suporter</h2>
+        {% if erori %}
+          <div class="erori">
+            <ul>
+              {% for key, val in erori.items() %}
+                <li class="error">{{ val }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <label>Nr. Legitimație</label>
+        <input type="text" name="nr_legitimatie" value="{{ form.get('nr_legitimatie') }}">
+
+        <label>Nume</label>
+        <input type="text" name="nume" value="{{ form.get('nume') }}">
+
+        <label>Prenume</label>
+        <input type="text" name="prenume" value="{{ form.get('prenume') }}">
+
+        <label>Email</label>
+        <input type="email" name="email" value="{{ form.get('email') }}">
+
+        <label>Telefon</label>
+        <input type="text" name="telefon" value="{{ form.get('telefon') }}">
+
+        <label>Tip Abonament</label>
+        <select name="tip_abonament">
+          <option value="Standard" {% if form.get('tip_abonament')=='Standard' %}selected{% endif %}>Standard</option>
+          <option value="Premium" {% if form.get('tip_abonament')=='Premium' %}selected{% endif %}>Premium</option>
+          <option value="VIP" {% if form.get('tip_abonament')=='VIP' %}selected{% endif %}>VIP</option>
+        </select>
+
+        <label>Data Inceput (YYYY-MM-DD)</label>
+        <input type="text" name="data_inceput" value="{{ form.get('data_inceput') }}">
+
+        <label>Data Expirare (YYYY-MM-DD)</label>
+        <input type="text" name="data_expirare" value="{{ form.get('data_expirare') }}">
+
+        <label>Status</label>
+        <select name="status">
+          <option value="Activ" {% if form.get('status')=='Activ' %}selected{% endif %}>Activ</option>
+          <option value="Expirat" {% if form.get('status')=='Expirat' %}selected{% endif %}>Expirat</option>
+          <option value="Suspendat" {% if form.get('status')=='Suspendat' %}selected{% endif %}>Suspendat</option>
+        </select>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Salveaza</button>
+          <a href="/dashboard" class="btn btn-secondary">Anuleaza</a>
+        </div>
+      </form>
+    </main>
+  </div>
+</body>
+</html>

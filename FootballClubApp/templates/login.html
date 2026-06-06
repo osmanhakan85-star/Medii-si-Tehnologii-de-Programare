@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Login - AS FC FOTBAL CLUB</title>
+  <link rel="stylesheet" href="/static/style.css">
+ </head>
+<body>
+  <div class="container-login">
+    <header class="header header-login">
+      <div class="logo">
+        <!-- Afisam logo-ul custom JPEG daca exista, altfel folosim logo.png -->
+        {% if custom_logo %}
+          <img src="{{ custom_logo }}" alt="logo" class="logo-img logo-custom">
+        {% else %}
+          <img src="/static/logo.jpeg" alt="logo" class="logo-img">
+        {% endif %}
+        <span class="club-name">AS FC FOTBAL CLUB</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- Fundal stilizat cu text mare in spate -->
+      <div class="bg-watermark">MAI MULT DECAT UN CLUB</div>
+      <form method="post" class="card login-card">
+        <h2>Autentificare</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <label>Username</label>
+        <input type="text" name="username" placeholder="admin">
+
+        <label>Parola</label>
+        <input type="password" name="password" placeholder="parola">
+
+        <button type="submit" class="btn-primary">Login</button>
+      </form>
+    </main>
+  </div>
+</body>
+</html>

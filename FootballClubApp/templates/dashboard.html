@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard - AS FC FOTBAL CLUB</title>
+  <link rel="stylesheet" href="/static/style.css">
+ </head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <img src="/static/logo.jpeg" alt="logo" class="logo-img">
+        <span class="club-name">AS FC FOTBAL CLUB</span>
+      </div>
+      <div class="actions">
+        <a href="/adauga" class="btn">Adauga Suporter</a>
+        <a href="/logout" class="btn btn-logout">Deconectare</a>
+      </div>
+    </header>
+
+    <main>
+      <h1>Lista Suporteri</h1>
+      <form method="get" action="/dashboard" class="search-form">
+        <input type="text" name="q" value="{{ q }}" placeholder="Cauta dupa nume, prenume sau nr. legitimatie">
+        <button type="submit" class="btn">Cauta</button>
+        <a href="/dashboard" class="btn btn-secondary">Reset</a>
+      </form>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nr. Legit.</th>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Email</th>
+            <th>Telefon</th>
+            <th>Tip Abonament</th>
+            <th>Data Inceput</th>
+            <th>Data Expirare</th>
+            <th>Status</th>
+            <th>Actiuni</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in suporteri %}
+          <tr>
+            <td>{{ s.id }}</td>
+            <td>{{ s.nr_legitimatie }}</td>
+            <td>{{ s.nume }}</td>
+            <td>{{ s.prenume }}</td>
+            <td>{{ s.email }}</td>
+            <td>{{ s.telefon }}</td>
+            <td>{{ s.tip_abonament }}</td>
+            <td>{{ s.data_inceput }}</td>
+            <td>{{ s.data_expirare }}</td>
+            <td>{{ s.status }}</td>
+            <td>
+              <a href="/editeaza/{{ s.id }}" class="btn btn-small">Editeaza</a>
+              <a href="/sterge/{{ s.id }}" class="btn btn-danger btn-small">Sterge</a>
+            </td>
+          </tr>
+          {% else %}
+          <tr><td colspan="11">Nu exista suporteri.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+  </div>
+</body>
+</html>
